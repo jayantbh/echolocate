@@ -1,0 +1,8 @@
+.tweet-popup {
+  max-width: 200px;
+}
+
+.tweet-popup .mapboxgl-popup-content {
+  padding: 5px;
+  word-wrap: break-word;
+}
