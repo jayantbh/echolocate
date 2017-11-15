@@ -8,16 +8,20 @@
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 99999; }
-  .overlay-interface * {
-    pointer-events: initial; }
+  z-index: 99999;
+
+  & * {
+    pointer-events: initial;
+  }
+}
 
 .tracking-term-component {
   display: flex;
   flex-direction: column;
   background: #f0e9d8;
   border: 1px solid #3d3fa0;
-  padding: 5px; }
+  padding: 5px;
+}
 
 .info-box {
   position: fixed;
@@ -25,14 +29,17 @@
   left: 0;
   background: #f0e9d8;
   border: 1px solid #3d3fa0;
-  font-size: 12px; }
+  font-size: 12px;
+}
 
 .tracking-term-input {
   display: flex;
-  align-items: center; }
+  align-items: center;
+}
 
 .tracking-term-label {
-  color: #d3504f; }
+  color: #d3504f;
+}
 
 #tracking-term {
   height: 1.8em;
@@ -41,10 +48,12 @@
   min-width: 400px;
   border: none;
   border-bottom: 1px solid #3d3fa0;
-  background: #e9dfc6;
-  color: #d3504f; }
+  background: darken(#f0e9d8, 5%);
+  color: #d3504f;
+}
 
 .update-term-button {
   color: #d3504f;
   border: none;
-  height: 1.8em; }
+  height: 1.8em;
+}

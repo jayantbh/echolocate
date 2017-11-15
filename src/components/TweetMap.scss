@@ -1,0 +1,18 @@
+#tweet-map--container {
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.tweet-popup {
+  max-width: 200px;
+
+  &:hover {
+    z-index: 4 !important;
+  }
+
+  & .mapboxgl-popup-content {
+    padding: 5px;
+    word-wrap: break-word;
+  }
+}
