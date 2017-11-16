@@ -20,8 +20,20 @@ export default class TweetMap extends Component {
         height: "100vh",
         width: "100vw"
       },
-      initialized: false
+      currentZoom: 2
     }
+  }
+  handleZoom(e) {
+    e.preventDefault();
+    console.log(e.deltaY, this.state.currentZoom)
+    this.setState({ zoom: [this.state.currentZoom + (-1 * e.deltaY/3)] })
+    // this.setState({ zoom: [4] })
+  }
+  handleMapZoom(e) {
+    this.setState({ currentZoom: e.style.z })
+  }
+  handleHover(e, point) {
+    this.setState({ center: point })
   }
   render() {
     return (
@@ -30,7 +42,7 @@ export default class TweetMap extends Component {
           style={this.state.style}
           center={this.state.center}
           zoom={this.state.zoom}
-          onZoom={(e) => console.log(e.style.z)}
+          onZoom={(e) => this.handleMapZoom(e)}
           containerStyle={this.state.containerStyle}
           >
             {
@@ -39,8 +51,9 @@ export default class TweetMap extends Component {
                   key={i}
                   className="tweet-popup"
                   coordinates={tweet.point}
-                  onScroll={e => console.log(e.deltaY)}
-                  onWheel={e => console.log(e.deltaY, e.deltaX)}
+                  onMouseEnter={(e) => this.handleHover(e, tweet.point)}
+                  onScroll={(e) => this.handleZoom(e)}
+                  onWheel={(e) => this.handleZoom(e)}
                 >
                   <span>{tweet.text}</span>
                 </Popup>
