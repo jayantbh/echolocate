@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import ReactMapboxGl, { Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker } from "react-mapbox-gl";
+
 import '../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 import './TweetMap.css';
+import logo from '../twitter.svg';
+
 import MAPBOX_PUBLIC_KEY from '../mapbox-key';
 
 const Map = ReactMapboxGl({
@@ -14,26 +17,31 @@ export default class TweetMap extends Component {
     super(props);
     this.state = {
       style: 'mapbox://styles/jayantbhawal/cj9yiw8tw7nmi2rlu2nnqzndd',
-      zoom: [2],
+      zoom: [1],
       center: [0,20],
+      maxBounds: [[-180, -60], [180, 80]],
       containerStyle: {
         height: "100vh",
         width: "100vw"
       },
-      currentZoom: 2
+      popupLimit: 7
     }
   }
-  handleZoom(e) {
-    e.preventDefault();
-    console.log(e.deltaY, this.state.currentZoom)
-    this.setState({ zoom: [this.state.currentZoom + (-1 * e.deltaY/3)] })
-    // this.setState({ zoom: [4] })
+  centerOnPoint(point, zoom) {
+    this.setState({ center: point, zoom: [zoom] });
   }
-  handleMapZoom(e) {
-    this.setState({ currentZoom: e.style.z })
+  handlePopupAutoShow(el, tweet) {
+    if (!el) return;
+    const show = this.props.tweets.slice(-1 * this.state.popupLimit).includes(tweet);
+    setTimeout(() => {
+      el.classList.toggle('active', show)
+    }, 300);
   }
-  handleHover(e, point) {
-    this.setState({ center: point })
+  handleMarkerAddition(el) {
+    if (!el) return;
+    setTimeout(() => {
+      el.classList.remove('shrink');
+    }, 100);
   }
   render() {
     return (
@@ -42,22 +50,26 @@ export default class TweetMap extends Component {
           style={this.state.style}
           center={this.state.center}
           zoom={this.state.zoom}
-          onZoom={(e) => this.handleMapZoom(e)}
+          maxBounds={this.state.maxBounds}
           containerStyle={this.state.containerStyle}
           >
             {
-              this.props.tweets.map((tweet, i) =>
-                <Popup
-                  key={i}
-                  className="tweet-popup"
-                  coordinates={tweet.point}
-                  onMouseEnter={(e) => this.handleHover(e, tweet.point)}
-                  onScroll={(e) => this.handleZoom(e)}
-                  onWheel={(e) => this.handleZoom(e)}
-                >
-                  <span>{tweet.text}</span>
-                </Popup>
-              )
+              this.props.tweets.map((tweet, i) => {
+                return (
+                  <Marker
+                    key={tweet.count}
+                    coordinates={tweet.point}
+                    anchor="bottom"
+                    className="marker-component"
+                    onClick={() => this.centerOnPoint(tweet.point, 11)}
+                  >
+                    <div className="twitter-marker shrink" ref={(el) => this.handleMarkerAddition(el)}>
+                      <img src={logo} alt="marker"/>
+                    </div>
+                    <div className="twitter-marker--content" ref={(el) => this.handlePopupAutoShow(el, tweet)}><span>{tweet.text}</span></div>
+                  </Marker>
+                );
+              })
             }
         </Map>
       </div>

@@ -19,14 +19,6 @@
   border: 1px solid #3d3fa0;
   padding: 5px; }
 
-.info-box {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #f0e9d8;
-  border: 1px solid #3d3fa0;
-  font-size: 12px; }
-
 .tracking-term-input {
   display: flex;
   align-items: center; }
@@ -35,8 +27,8 @@
   color: #d3504f; }
 
 #tracking-term {
-  height: 1.8em;
-  font-size: 1.1em;
+  height: 1.8rem;
+  font-size: 1.1rem;
   width: 30%;
   min-width: 400px;
   border: none;
@@ -47,4 +39,7 @@
 .update-term-button {
   color: #d3504f;
   border: none;
-  height: 1.8em; }
+  margin-left: 9px;
+  height: 1.8rem;
+  font-size: 1rem;
+  line-height: 1.7rem; }

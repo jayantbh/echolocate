@@ -3,12 +3,76 @@
   width: 100vw;
 }
 
+.marker-component:hover {
+  z-index: 4 !important;
+}
+
+.twitter-marker {
+  height: 20px;
+  width: 20px;
+  padding: 4px;
+  background: white;
+  border: 2px solid #55acee;
+  border-radius: 50%;
+  cursor: zoom-in;
+  user-select: none;
+  z-index: 9;
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.2s transform, 0.2s opacity;
+
+  &.shrink {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  + .twitter-marker--content {
+    background: white;
+    width: 200px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15px;
+    margin: auto;
+    border-radius: 5px;
+    border: 2px solid #55acee;
+    padding: 5px;
+    padding-bottom: 16px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 8;
+    transform: translateY(15px);
+    transition: 0.2s transform, 0.2s opacity;
+
+    &:hover, &.active {
+      display: initial;
+      pointer-events: initial;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    + .twitter-marker--content {
+      display: initial;
+      pointer-events: initial;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+  }
+}
 
 .tweet-popup {
   max-width: 200px;
 
   &:hover {
-    z-index: 4 !important;
+    z-index: 4;
   }
 
   & .mapboxgl-popup-content {
