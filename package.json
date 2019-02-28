@@ -10,7 +10,7 @@
     "react-dom": "^16.8.2",
     "react-mapbox-gl": "^2.8.0",
     "react-scripts": "1.0.17",
-    "react-websocket": "^1.2.0",
+    "react-websocket": "^2.0.1",
     "twitter": "^1.7.1",
     "ws": "^3.3.1"
   },
