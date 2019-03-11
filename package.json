@@ -9,7 +9,7 @@
     "react": "^16.1.1",
     "react-dom": "^16.8.4",
     "react-mapbox-gl": "^2.8.0",
-    "react-scripts": "2.1.5",
+    "react-scripts": "2.1.8",
     "react-websocket": "^2.0.1",
     "twitter": "^1.7.1",
     "ws": "^6.2.0"
