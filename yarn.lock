@@ -7641,9 +7641,9 @@ react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
 
-react-mapbox-gl@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/react-mapbox-gl/-/react-mapbox-gl-4.2.1.tgz#01516d119a1d7d045259fb9f75b43ac9686cbad8"
+react-mapbox-gl@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/react-mapbox-gl/-/react-mapbox-gl-4.2.3.tgz#e8e5afb45d9a809a89f5e43c85b7b8f929fef061"
   dependencies:
     "@turf/bbox" "4.7.3"
     "@turf/helpers" "4.7.3"
